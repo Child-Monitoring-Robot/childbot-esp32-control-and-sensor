@@ -37,7 +37,7 @@ const int LEFT_BACK_ONE = 15;
 const int LEFT_BACK_TWO = 2;
 
 // buzzer
-const int BUZZER_PIN = 13;
+const int BUZZER_PIN = 26;
 
 bool states[8] = {false, false, false, false, false, false, false, false};
 
@@ -147,7 +147,12 @@ void loop() {
   }
 
   if (request.indexOf("/toggleBuzzer") != -1) {
-    digitalWrite(BUZZER_PIN, !digitalRead(BUZZER_PIN));
+    if(digitalRead(BUZZER_PIN) == HIGH) {
+      digitalWrite(BUZZER_PIN, LOW);
+    }
+    else {
+      digitalWrite(BUZZER_PIN, HIGH);
+    }
   }
 
   // HTML content for the webpage
